@@ -2,16 +2,18 @@ html,
 body {
     height: 90vh;
     margin: 0;
-    background-color:#151515;
+    background-color: #151515;
     font-family: "Segoe UI", Verdana, sans-serif;
     color: white;
     padding-left: 5%;
     padding-right: 5%;
 }
+
 h1, h2 {
     color: #94692d;
 }
-#footer{
+
+#footer {
     margin-top: auto;
     bottom: 0;
     display: flex;
@@ -21,17 +23,43 @@ h1, h2 {
     padding-bottom: 20px;
     border-top: 1px solid #94692d;
 }
+
 #footer-text {
     text-align: center;
 }
+
 #footer-logo-image {
     width: 100px;
     height: auto;
 }
+
 a {
     text-decoration: none;
-    color:#94692d;
+    color: #94692d;
 }
+
 a:hover {
     color: #FF4136;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+#video-holder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+iframe {
+    border: 1px solid #94692d;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 800px) {
+    #video-holder {
+        justify-content: left;
+    }
 }
