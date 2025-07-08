@@ -61,7 +61,7 @@ function Root() {
 
                 <h2>How to install</h2>
                 <ol>
-                    <li><a href="https://github.com/miiree12lb/MenuMentor/archive/main.zip" target="_blank" rel="noopener noreferrer">Download Zip</a></li>
+                    <li><a href="https://github.com/miiree12lb/MenuMentor/raw/main/MenuMentor.zip" target="_blank" rel="noopener noreferrer">Download Zip</a></li>
                     <li>Unzip the folder in the desired folder on your computer.</li>
                     <li>Open the config.txt file and write the location on the computer where you want to save the SQLite database (Example on Windows: C:\Users\mirei\Desktop\MenuMentor\InternalDB.db).</li>
                     <li>Compile and run the code in a terminal.</li>
