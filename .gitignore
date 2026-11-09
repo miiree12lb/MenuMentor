@@ -1,0 +1,13 @@
+# Build output
+out/
+*.class
+
+# Local database (created from data/sample.db on first run)
+InternalDB.db
+Config.txt
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

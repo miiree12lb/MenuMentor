@@ -1,21 +1,47 @@
 # MenuMentor
-## Introduction
-This is a cross-platform desktop application created using Java. I developed this project predominantly during my 11th and 12th grades in high school. The application's primary functionality is to generate weekly menus based on user preferences. Users start by inputting the minimum amount of calories they wish to consume daily. They can then add ingredients and courses to their preferences.
 
-When adding a new course, users specify whether it is a first or second course and whether they prefer it during lunch or dinner. Additionally, the application prompts users for the maximum number of times they want to include a particular course in their weekly menu and the minimum wait time before repeating it. The system utilizes this information to generate a personalized weekly menu. If any of the specified conditions are not met, the affected course will be highlighted in red on the weekly menu.
+A desktop app that plans a week of meals for you. You add your ingredients and dishes once, set a daily calorie range, and MenuMentor generates a weekly menu of lunches and dinners (first and second course each) that respects how often you want to eat each dish, how long to wait before repeating it, and your calorie limits. It then builds the shopping list for the week.
 
-In addition to menu generation, the application compiles a list of the required ingredients for the week and the necessary amounts. Users can print this list and save it on their computer. The application provides features such as modifying the proposed menu, obtaining caloric data for the week, generating a list of unmet requirements, and modifying all application data.
+Built with **Java (Swing)** and **SQLite**.
 
-## Installation requirements
-This application requires Java 17 and JVM 17 for proper functionality.
+## Features
 
-To install Java 17 and JVM 17:
-1. Visit the official Java website: [Java Downloads](https://www.oracle.com/java/technologies/javase-jdk17-downloads.html).
-2. Download and install Java 17 for your operating system.
-3. Ensure that the installed Java version matches the application's requirements.
+- **Ingredients & dishes:** store ingredients with their calories, and dishes with their ingredients (in grams), an optional recipe link, whether they're for lunch and/or dinner, and whether they're a first or second course.
+- **Weekly menu generation:** picks dishes at random from the ones that meet every rule:
+  - **Frequency:** at most *n* times in the last 28 days
+  - **Waiting time:** at least *n* days since it was last eaten
+  - **Calories:** stays within your daily minimum and maximum
+- **Unfulfilled requirements:** when no dish meets every rule, MenuMentor still fills the slot and tells you which rule couldn't be met.
+- **Swap menus:** exchange the meals of two days in the week.
+- **Calorie overview:** calories per course, plus the week's total and daily average.
+- **Shopping list:** total ingredients needed for the week, ready to print.
+- **Enable/disable dishes:** take a dish out of rotation without deleting it.
 
-## How to install?
-1. [Download Zip](https://github.com/miiree12lb/MenuMentor/archive/main.zip)
-2. Unzip the folder in the desired folder on your computer.
-3. Open the config.txt file and write the location in the computer where you want to save the SQLite database (Here's an example on windows: C:\Users\mirei\Desktop\MenuMentor\InternalDB.db).
-4. Compile and run the code in a terminal.
+## Running it
+
+You need a **JDK 8 or newer** (`javac` and `java` on your PATH).
+
+```sh
+# Windows
+run.bat
+
+# macOS / Linux
+./run.sh
+```
+
+The script compiles `src/` into `out/` and starts the app.
+
+On first run, MenuMentor creates `InternalDB.db` from the example data in `data/sample.db` (30 ingredients, 20 dishes), so there's something to try straight away. Your own data stays in `InternalDB.db`, which is not committed.
+
+To keep the database somewhere else, create a `Config.txt` next to the app containing the path to the `.db` file.
+
+## Project structure
+
+```
+src/         Java sources (Swing windows + domain classes)
+resources/   Icons used by the UI
+lib/         SQLite JDBC driver
+data/        Example database copied in on first run
+```
+
+The database schema is created automatically on start-up (`Main.generarDB`).
